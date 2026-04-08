@@ -1,0 +1,34 @@
+:root {
+  color: #ffffff;
+  background: #0b0b0d;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b0b0d;
+}
+
+body {
+  min-width: 320px;
+}
+
+canvas {
+  display: block;
+}
