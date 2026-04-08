@@ -3,7 +3,7 @@ import * as THREE from "three";
 const PAGES_COLOR = "#ffffff";
 const COVER_COLOR = "#000000";
 
-const PAGES_DEPTH = 0.3;
+const PAGES_DEPTH = 0.2;
 const PAGES_HEIGHT = 3;
 const PAGES_WIDTH = 2;
 
