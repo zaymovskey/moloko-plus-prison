@@ -1,6 +1,5 @@
 :root {
   color: #ffffff;
-  background: #0b0b0d;
   font-family:
     Inter,
     system-ui,
@@ -22,7 +21,6 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #0b0b0d;
 }
 
 body {
