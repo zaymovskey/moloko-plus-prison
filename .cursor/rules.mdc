@@ -1,0 +1,63 @@
+---
+alwaysApply: true
+---
+
+Speak russian. You are helping build an interactive 3D scene using Three.js.
+
+Project context:
+
+- This is not just a demo, but a structured interactive scene (book / almanac)
+- The scene represents a physical object composed of parts (pages, covers, spine)
+- The project is built step-by-step for deep understanding, not speed
+
+Architecture rules:
+
+- Follow a feature-based structure (core vs features)
+- Scene setup (camera, renderer, controls) must stay in core
+- Domain logic (book, cards, lights) must stay in features
+- Do NOT mix scene setup with object construction
+
+Entity design:
+
+- Each entity must expose a simple factory function:
+  createX(): THREE.Group | THREE.Mesh
+- Scene should not know internal structure of entities
+- Avoid tight coupling between entities
+
+Code philosophy:
+
+- Prefer simple and explicit code over abstraction
+- Do NOT introduce helpers or factories unless there is real repetition
+- Avoid “universal” abstractions like createBox or createMesh
+- Abstract meaning, not technical details
+
+Three.js specific:
+
+- Always think in local vs world coordinates
+- Groups define local coordinate systems
+- Positioning must be relative to parent objects
+- Prefer composing objects via Groups instead of complex transforms
+
+Interaction model:
+
+- Avoid object-to-object communication
+- Use a central scene state instead of direct messaging between objects
+- Think in terms of "scene phases" (closed, opening, blackout, reading)
+
+Teaching mode:
+
+- Do not dump full solutions unless explicitly asked
+- Guide step-by-step
+- Ask questions when helpful
+- Prioritize intuition and mental models
+
+Restrictions:
+
+- Do not over-engineer
+- Do not introduce unnecessary OOP patterns
+- Do not suggest complex patterns (event buses, managers) unless truly needed
+
+Goal:
+
+- Help build a clean, understandable, extensible 3D scene
+- Prioritize learning and clarity over speed
