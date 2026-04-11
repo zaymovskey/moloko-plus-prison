@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { createClosedAlmanac } from "../../features/almanac/createClosedAlmanac";
 
 export function createScene(): void {
+  // Base scene setup
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(
@@ -27,14 +28,6 @@ export function createScene(): void {
 
   scene.background = new THREE.Color(0x222222);
 
-  // Cube
-  //   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  //   const material = new THREE.MeshStandardMaterial({
-  //     color: 0x00ff00,
-  //   });
-  //   const cube = new THREE.Mesh(geometry, material);
-  //   scene.add(cube);
-
   // Light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
   scene.add(ambientLight);
@@ -47,10 +40,9 @@ export function createScene(): void {
     1,
     0xff0000,
   );
-
-  // ------
   scene.add(lightHelper);
 
+  // Almanac
   const almanac = createClosedAlmanac();
   scene.add(almanac);
 

@@ -1,0 +1,26 @@
+# зависимости
+node_modules
+
+# сборка
+dist
+build
+.vite
+
+# lock-файлы
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# логи
+*.log
+
+# большие данные
+*.json
+
+# ассеты (если станут тяжёлыми)
+*.png
+*.jpg
+*.jpeg
+
+# стили (если не важны для логики)
+*.css 

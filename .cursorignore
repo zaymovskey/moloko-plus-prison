@@ -1,0 +1,32 @@
+# зависимости
+node_modules
+
+# сборка
+dist
+build
+.vite
+
+# кеши
+.cache
+.tmp
+
+# git
+.git
+
+# env
+.env
+.env.*
+
+# системное
+.DS_Store
+Thumbs.db
+
+# логи
+*.log
+
+# тяжёлые 3D ассеты (если появятся)
+*.glb
+*.gltf
+*.fbx
+*.hdr
+*.exr 
