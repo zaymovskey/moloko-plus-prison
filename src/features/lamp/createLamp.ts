@@ -16,7 +16,7 @@ export function createLamp(): LampRig {
   const fill = new THREE.HemisphereLight(0x4a4a5a, 0x121212, 0.12);
   group.add(fill);
 
-  const lamp = new THREE.SpotLight(0xfff1d6, 25, 12, Math.PI / 4, 0.45, 2);
+  const lamp = new THREE.SpotLight(0xfff1d6, 25, 12, Math.PI / 4, 0.45, 0.7);
   lamp.position.set(1.5, 2.3, 3.5);
   lamp.castShadow = true;
   lamp.shadow.mapSize.set(1024, 1024);

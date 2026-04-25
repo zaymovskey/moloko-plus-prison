@@ -42,7 +42,7 @@ export function createClosedAlmanac(): THREE.Group {
     color: COVER_COLOR,
     normalMap: coverNormalTexture,
     roughnessMap: coverRoughnessTexture,
-    roughness: 0.9,
+    roughness: 0.6,
     metalness: 0.0,
   };
 
