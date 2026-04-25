@@ -26,6 +26,7 @@ export function createLampDebugGui(
     penumbra: lamp.penumbra,
     decay: lamp.decay,
     shadowBias: lamp.shadow.bias,
+    showHelper: helper.visible,
   };
 
   const positionFolder = lampGui.addFolder("Position");
@@ -111,5 +112,11 @@ export function createLampDebugGui(
     .name("shadow bias")
     .onChange((value: number) => {
       lamp.shadow.bias = value;
+    });
+  beamFolder
+    .add(params, "showHelper")
+    .name("show helper")
+    .onChange((value: boolean) => {
+      helper.visible = value;
     });
 }

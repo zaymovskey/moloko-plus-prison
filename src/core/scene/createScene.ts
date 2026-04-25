@@ -4,6 +4,7 @@ import { createClosedAlmanac } from "../../features/almanac/createClosedAlmanac"
 import { createTable } from "../../features/table/createTable";
 import { createLamp } from "../../features/lamp/createLamp";
 import { createCameraWithControls } from "../camera-with-controls/createCameraWithControls";
+import { createWalls } from "../../features/walls/createWalls";
 
 const SCENE_COLOR = "#222222";
 
@@ -28,6 +29,10 @@ export function createScene(): void {
   const table = createTable();
   table.position.set(0, -2, 0);
   scene.add(table);
+
+  // Walls
+  const walls = createWalls();
+  scene.add(walls);
 
   animate();
 

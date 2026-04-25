@@ -17,18 +17,14 @@ export function createTable(): THREE.Group {
   const tableRoughnessTexture = textureLoader.load(tableRoughness);
   const tableColorTexture = textureLoader.load(tableColor);
 
-  const tableBaseMaterialParams: THREE.MeshStandardMaterialParameters = {
+  const tableTopMaterial = new THREE.MeshStandardMaterial({
     color: TABLE_COLOR,
     normalMap: tableNormalTexture,
     roughnessMap: tableRoughnessTexture,
     roughness: 0.9,
     metalness: 0.0,
     map: tableColorTexture,
-  };
-
-  const tableTopMaterial = new THREE.MeshStandardMaterial(
-    tableBaseMaterialParams,
-  );
+  });
 
   const tableTopMesh = new THREE.Mesh(tableTop, tableTopMaterial);
 
