@@ -9,7 +9,7 @@ const TABLE_COLOR = "#3a342f";
 export function createTable(): THREE.Group {
   const tableGroup = new THREE.Group();
 
-  const tableTop = new THREE.BoxGeometry(13, 0.1, 5);
+  const tableTop = new THREE.BoxGeometry(10, 0.1, 5);
 
   const textureLoader = new THREE.TextureLoader();
 
