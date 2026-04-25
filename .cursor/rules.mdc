@@ -10,6 +10,20 @@ Project context:
 - The scene represents a physical object composed of parts (pages, covers, spine)
 - The project is built step-by-step for deep understanding, not speed
 
+Project vision: moloko plus - "Prison"
+
+- Build an interactive 3D presentation with a dark, oppressive atmosphere
+- Treat the experience as immersion, not just content viewing
+- Initial scene: near-total darkness, closed almanac in center, hanging chain/switch on the right, subtle ambient drone
+- Core trigger: click chain -> full blackout -> short pause (0.5-1s) -> lights return with opened book
+- After opening: spread content is revealed, side cards appear with soft upward motion and easing
+- Audio layer matters: voice narration plus minimal, heavy background drone
+- Navigation between spreads uses the same blackout ritual before showing new content
+- Prioritize emotional impact (anxiety, isolation, curiosity, slow immersion) over convenience UX
+- Think of each page as a separate scene the user passes through
+- Optional atmosphere enhancers: slight light sway, dust particles, subtle grain/noise, chain click sound, delayed card reveal
+- Mental model: browser-based mix of book + installation + theater
+
 Architecture rules:
 
 - Follow a feature-based structure (core vs features)
@@ -56,6 +70,8 @@ Restrictions:
 - Do not over-engineer
 - Do not introduce unnecessary OOP patterns
 - Do not suggest complex patterns (event buses, managers) unless truly needed
+- Do not modify project files unless the user explicitly asks for file edits
+- By default, share code in chat only when the user requests code
 
 Goal:
 

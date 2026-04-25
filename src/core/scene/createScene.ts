@@ -2,13 +2,14 @@ import * as THREE from "three";
 import "../../styles/style.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { createClosedAlmanac } from "../../features/almanac/createClosedAlmanac";
+import { createTable } from "../../features/table/createTable";
 
 export function createScene(): void {
   // Base scene setup
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(
-    75, // угол обзора (FOV)
+    40, // угол обзора (FOV)
     window.innerWidth / window.innerHeight, // соотношение сторон
     0.1, // ближняя граница
     100, // дальняя граница
@@ -52,6 +53,11 @@ export function createScene(): void {
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
   }
+
+  // Table
+  const table = createTable();
+  table.position.set(0, -2, 0);
+  scene.add(table);
 
   animate();
 }
