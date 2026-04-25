@@ -7,6 +7,9 @@ import { BACK_WALL_DEPTH } from "./consts";
 import wallColor from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_Color.jpg";
 import wallNormal from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_NormalGL.jpg";
 import wallRoughness from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_Roughness.jpg";
+import rustedMetalColor from "../../assets/textures/rusted-metal/Metal053C_1K-JPG_Color.jpg";
+import rustedMetalNormal from "../../assets/textures/rusted-metal/Metal053C_1K-JPG_NormalGL.jpg";
+import rustedMetalRoughness from "../../assets/textures/rusted-metal/Metal053C_1K-JPG_Roughness.jpg";
 
 export function createBackWall(): THREE.Group {
   const backWallGroup = new THREE.Group();
@@ -16,6 +19,9 @@ export function createBackWall(): THREE.Group {
   const wallColorTexture = textureLoader.load(wallColor);
   const wallNormalTexture = textureLoader.load(wallNormal);
   const wallRoughnessTexture = textureLoader.load(wallRoughness);
+  const rustedMetalColorTexture = textureLoader.load(rustedMetalColor);
+  const rustedMetalNormalTexture = textureLoader.load(rustedMetalNormal);
+  const rustedMetalRoughnessTexture = textureLoader.load(rustedMetalRoughness);
   // Back wall. Left part
   const wallPartLeftWidth = BACK_WALL_WIDTH / 2 - WINDOW_WIDTH / 2;
 
@@ -103,6 +109,49 @@ export function createBackWall(): THREE.Group {
   topWallMesh.position.z = -5;
   topWallMesh.position.y = BACK_WALL_HEIGHT / 2 - topWallHeight / 2;
   backWallGroup.add(topWallMesh);
+
+  // Back wall. Grating rod
+  const gratingRodMaterial = new THREE.MeshStandardMaterial({
+    map: rustedMetalColorTexture,
+    normalMap: rustedMetalNormalTexture,
+    roughnessMap: rustedMetalRoughnessTexture,
+    roughness: 0.85,
+    metalness: 0.75,
+  });
+
+  rustedMetalColorTexture.colorSpace = THREE.SRGBColorSpace;
+  [
+    rustedMetalColorTexture,
+    rustedMetalNormalTexture,
+    rustedMetalRoughnessTexture,
+  ].forEach((texture) => {
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(1, 2);
+  });
+
+  const windowHeight = BACK_WALL_HEIGHT - bottomWallHeight - topWallHeight; // 1
+  const rodRadius = 0.035;
+  const rodGeometry = new THREE.CylinderGeometry(
+    rodRadius,
+    rodRadius,
+    windowHeight,
+    24,
+  );
+  const rodsCount = 9;
+  const windowHalfWidth = WINDOW_WIDTH / 2;
+  const sidePadding = 0.12;
+  const rodsMinX = -windowHalfWidth + sidePadding;
+  const rodsMaxX = windowHalfWidth - sidePadding;
+  const rodY = -BACK_WALL_HEIGHT / 2 + bottomWallHeight + windowHeight / 2;
+
+  for (let i = 0; i < rodsCount; i += 1) {
+    const t = i / (rodsCount - 1);
+    const rodX = rodsMinX + (rodsMaxX - rodsMinX) * t;
+    const gratingRodMesh = new THREE.Mesh(rodGeometry, gratingRodMaterial);
+    gratingRodMesh.position.set(rodX, rodY, -4.94);
+    backWallGroup.add(gratingRodMesh);
+  }
 
   return backWallGroup;
 }
