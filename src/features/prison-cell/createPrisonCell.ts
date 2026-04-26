@@ -3,6 +3,9 @@ import * as THREE from "three";
 import wallColor from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_Color.jpg";
 import wallNormal from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_NormalGL.jpg";
 import wallRoughness from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_Roughness.jpg";
+import floorColor from "../../assets/textures/concrete-floor/damaged_concrete_floor_diff_1k.jpg";
+import floorNormal from "../../assets/textures/concrete-floor/damaged_concrete_floor_nor_gl_1k.jpg";
+import floorRoughness from "../../assets/textures/concrete-floor/damaged_concrete_floor_rough_1k.jpg";
 import { createWallMaterial } from "./createWallMaterial";
 import { createBackWall } from "./createBackWall";
 import { WALLS_DEPTH, WALLS_HEIGHT, WALLS_WIDTH } from "./consts";
@@ -60,6 +63,27 @@ export function createWalls(): THREE.Group {
   // Back wall
   const backWall = createBackWall();
   wallsGroup.add(backWall);
+
+  // Floor
+  const floorColorTexture = textureLoader.load(floorColor);
+  const floorNormalTexture = textureLoader.load(floorNormal);
+  const floorRoughnessTexture = textureLoader.load(floorRoughness);
+  floorColorTexture.colorSpace = THREE.SRGBColorSpace;
+
+  const floor = new THREE.BoxGeometry(WALLS_WIDTH, WALLS_HEIGHT, WALLS_DEPTH);
+
+  const floorMaterial = createWallMaterial(
+    WALLS_WIDTH,
+    WALLS_HEIGHT,
+    floorColorTexture,
+    floorNormalTexture,
+    floorRoughnessTexture,
+  );
+
+  const floorMesh = new THREE.Mesh(floor, floorMaterial);
+  floorMesh.rotation.x = Math.PI / 2;
+  floorMesh.position.y = -WALLS_HEIGHT / 2;
+  wallsGroup.add(floorMesh);
 
   return wallsGroup;
 }

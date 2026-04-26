@@ -4,7 +4,7 @@ import { createClosedAlmanac } from "../../features/almanac/createClosedAlmanac"
 import { createTable } from "../../features/table/createTable";
 import { createLamp } from "../../features/lamp/createLamp";
 import { createCameraWithControls } from "../camera-with-controls/createCameraWithControls";
-import { createWalls } from "../../features/walls/createWalls";
+import { createWalls } from "../../features/prison-cell/createPrisonCell";
 
 const SCENE_COLOR = "#222222";
 
