@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { BACK_WALL_WIDTH, WINDOW_WIDTH } from "./consts";
 import { createWallMaterial } from "./createWallMaterial";
 import { BACK_WALL_HEIGHT } from "./consts";
-import { BACK_WALL_DEPTH } from "./consts";
+import { WALLS_DEPTH } from "./consts";
 
 import wallColor from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_Color.jpg";
 import wallNormal from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_NormalGL.jpg";
@@ -22,13 +22,14 @@ export function createBackWall(): THREE.Group {
   const rustedMetalColorTexture = textureLoader.load(rustedMetalColor);
   const rustedMetalNormalTexture = textureLoader.load(rustedMetalNormal);
   const rustedMetalRoughnessTexture = textureLoader.load(rustedMetalRoughness);
+
   // Back wall. Left part
   const wallPartLeftWidth = BACK_WALL_WIDTH / 2 - WINDOW_WIDTH / 2;
 
   const backWallPartLeft = new THREE.BoxGeometry(
     wallPartLeftWidth,
     BACK_WALL_HEIGHT,
-    BACK_WALL_DEPTH,
+    WALLS_DEPTH,
   );
   const backWallPartLeftMaterial = createWallMaterial(
     wallPartLeftWidth,
@@ -53,7 +54,7 @@ export function createBackWall(): THREE.Group {
   const backWallPartRight = new THREE.BoxGeometry(
     wallPartRightWidth,
     BACK_WALL_HEIGHT,
-    BACK_WALL_DEPTH,
+    WALLS_DEPTH,
   );
   const backWallPartRightMaterial = createWallMaterial(
     wallPartRightWidth,
@@ -77,7 +78,7 @@ export function createBackWall(): THREE.Group {
   const bottomWall = new THREE.BoxGeometry(
     BACK_WALL_WIDTH - wallPartRightWidth - wallPartLeftWidth,
     bottomWallHeight,
-    0.1,
+    WALLS_DEPTH,
   );
   const bottomWallMaterial = createWallMaterial(
     BACK_WALL_WIDTH - wallPartRightWidth - wallPartLeftWidth,
@@ -96,7 +97,7 @@ export function createBackWall(): THREE.Group {
   const topWall = new THREE.BoxGeometry(
     BACK_WALL_WIDTH - wallPartRightWidth - wallPartLeftWidth,
     topWallHeight,
-    0.1,
+    WALLS_DEPTH,
   );
   const topWallMaterial = createWallMaterial(
     BACK_WALL_WIDTH - wallPartRightWidth - wallPartLeftWidth,
@@ -130,6 +131,7 @@ export function createBackWall(): THREE.Group {
     texture.repeat.set(1, 2);
   });
 
+  // --- Grating rods ---
   const windowHeight = BACK_WALL_HEIGHT - bottomWallHeight - topWallHeight; // 1
   const rodRadius = 0.035;
   const rodGeometry = new THREE.CylinderGeometry(

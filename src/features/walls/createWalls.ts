@@ -5,6 +5,7 @@ import wallNormal from "../../assets/textures/painted-plaster/PaintedPlaster006_
 import wallRoughness from "../../assets/textures/painted-plaster/PaintedPlaster006_1K-JPG_Roughness.jpg";
 import { createWallMaterial } from "./createWallMaterial";
 import { createBackWall } from "./createBackWall";
+import { WALLS_DEPTH, WALLS_HEIGHT, WALLS_WIDTH } from "./consts";
 
 export function createWalls(): THREE.Group {
   const wallsGroup = new THREE.Group();
@@ -17,11 +18,15 @@ export function createWalls(): THREE.Group {
   wallColorTexture.colorSpace = THREE.SRGBColorSpace;
 
   // Left wall
-  const leftWall = new THREE.BoxGeometry(10, 10, 0.1);
+  const leftWall = new THREE.BoxGeometry(
+    WALLS_WIDTH,
+    WALLS_HEIGHT,
+    WALLS_DEPTH,
+  );
 
   const leftWallMaterial = createWallMaterial(
-    10,
-    10,
+    WALLS_WIDTH,
+    WALLS_HEIGHT,
     wallColorTexture,
     wallNormalTexture,
     wallRoughnessTexture,
@@ -35,10 +40,14 @@ export function createWalls(): THREE.Group {
   wallsGroup.add(leftWallMesh);
 
   // Right wall
-  const rightWall = new THREE.BoxGeometry(10, 10, 0.1);
+  const rightWall = new THREE.BoxGeometry(
+    WALLS_WIDTH,
+    WALLS_HEIGHT,
+    WALLS_DEPTH,
+  );
   const rightWallMaterial = createWallMaterial(
-    10,
-    10,
+    WALLS_WIDTH,
+    WALLS_HEIGHT,
     wallColorTexture,
     wallNormalTexture,
     wallRoughnessTexture,
@@ -48,6 +57,7 @@ export function createWalls(): THREE.Group {
   rightWallMesh.position.x = 5;
   wallsGroup.add(rightWallMesh);
 
+  // Back wall
   const backWall = createBackWall();
   wallsGroup.add(backWall);
 
